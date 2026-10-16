@@ -69,5 +69,12 @@ showQuestion();
 
 nextBtn.addEventListener("click", () => {
   currentNumber++;
-  showQuestion();
+
+  if (currentNumber >= questions.length) {
+    displayResult.textContent = `You got ${score} out of ${questions.length}`;
+    optionsContainer.replaceChildren();
+    questionElement.textContent = "Quiz complete";
+  } else {
+    showQuestion();
+  }
 });
