@@ -43,6 +43,7 @@ const displayResult = document.getElementById("result");
 const nextBtn = document.getElementById("next-btn");
 
 let currentNumber = 0;
+let score = 0;
 
 function showQuestion() {
   optionsContainer.replaceChildren();
@@ -56,6 +57,7 @@ function showQuestion() {
     button.addEventListener("click", () => {
       if (option === questions[currentNumber].answer) {
         displayResult.textContent = "Right!";
+        score++;
       } else {
         displayResult.textContent = "Wrong!";
       }
