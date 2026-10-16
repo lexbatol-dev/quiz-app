@@ -41,17 +41,20 @@ const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
 const displayResult = document.getElementById("result");
 
-questionElement.textContent = questions[0].question;
+function showQuestion() {
+  questionElement.textContent = questions[0].question;
 
-questions[0].options.forEach((option) => {
-  const button = document.createElement("button");
-  button.textContent = option;
-  button.addEventListener("click", () => {
-    if (option === questions[0].answer) {
-      displayResult.textContent = "Right!";
-    } else {
-      displayResult.textContent = "Wrong!";
-    }
+  questions[0].options.forEach((option) => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.addEventListener("click", () => {
+      if (option === questions[0].answer) {
+        displayResult.textContent = "Right!";
+      } else {
+        displayResult.textContent = "Wrong!";
+      }
+    });
+    optionsContainer.appendChild(button);
   });
-  optionsContainer.appendChild(button);
-});
+}
+showQuestion();
