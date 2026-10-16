@@ -41,14 +41,16 @@ const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
 const displayResult = document.getElementById("result");
 
-function showQuestion() {
-  questionElement.textContent = questions[0].question;
+let currentNumber = 0;
 
-  questions[0].options.forEach((option) => {
+function showQuestion() {
+  questionElement.textContent = questions[currentNumber].question;
+
+  questions[currentNumber].options.forEach((option) => {
     const button = document.createElement("button");
     button.textContent = option;
     button.addEventListener("click", () => {
-      if (option === questions[0].answer) {
+      if (option === questions[currentNumber].answer) {
         displayResult.textContent = "Right!";
       } else {
         displayResult.textContent = "Wrong!";
