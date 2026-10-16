@@ -39,6 +39,7 @@ const questions = [
 
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
+const displayResult = document.getElementById("result");
 
 questionElement.textContent = questions[0].question;
 
@@ -47,9 +48,9 @@ questions[0].options.forEach((option) => {
   button.textContent = option;
   button.addEventListener("click", () => {
     if (option === questions[0].answer) {
-      console.log("Right!");
+      displayResult.textContent = "Right!";
     } else {
-      console.log("Wrong!");
+      displayResult.textContent = "Wrong!";
     }
   });
   optionsContainer.appendChild(button);
