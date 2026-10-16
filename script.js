@@ -40,10 +40,14 @@ const questions = [
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
 const displayResult = document.getElementById("result");
+const nextBtn = document.getElementById("next-btn");
 
 let currentNumber = 0;
 
 function showQuestion() {
+  optionsContainer.replaceChildren();
+  displayResult.textContent = "";
+
   questionElement.textContent = questions[currentNumber].question;
 
   questions[currentNumber].options.forEach((option) => {
@@ -60,3 +64,8 @@ function showQuestion() {
   });
 }
 showQuestion();
+
+nextBtn.addEventListener("click", () => {
+  currentNumber++;
+  showQuestion();
+});
