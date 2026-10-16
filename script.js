@@ -45,5 +45,12 @@ questionElement.textContent = questions[0].question;
 questions[0].options.forEach((option) => {
   const button = document.createElement("button");
   button.textContent = option;
+  button.addEventListener("click", () => {
+    if (option === questions[0].answer) {
+      console.log("Right!");
+    } else {
+      console.log("Wrong!");
+    }
+  });
   optionsContainer.appendChild(button);
 });
