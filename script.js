@@ -41,6 +41,7 @@ const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
 const displayResult = document.getElementById("result");
 const nextBtn = document.getElementById("next-btn");
+const restartBtn = document.getElementById("restart-btn");
 
 let currentNumber = 0;
 let score = 0;
@@ -74,7 +75,17 @@ nextBtn.addEventListener("click", () => {
     displayResult.textContent = `You got ${score} out of ${questions.length}`;
     optionsContainer.replaceChildren();
     questionElement.textContent = "Quiz complete";
+    nextBtn.hidden = true;
+    restartBtn.hidden = false;
   } else {
     showQuestion();
   }
+});
+
+restartBtn.addEventListener("click", () => {
+  nextBtn.hidden = false;
+  restartBtn.hidden = true;
+  currentNumber = 0;
+  score = 0;
+  showQuestion();
 });
