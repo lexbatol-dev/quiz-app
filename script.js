@@ -45,10 +45,12 @@ const restartBtn = document.getElementById("restart-btn");
 
 let currentNumber = 0;
 let score = 0;
+let answered = false;
 
 function showQuestion() {
   optionsContainer.replaceChildren();
   displayResult.textContent = "";
+  answered = false;
 
   questionElement.textContent = questions[currentNumber].question;
 
@@ -56,12 +58,17 @@ function showQuestion() {
     const button = document.createElement("button");
     button.textContent = option;
     button.addEventListener("click", () => {
+      if (answered) {
+        return;
+      }
+
       if (option === questions[currentNumber].answer) {
         displayResult.textContent = "Right!";
         score++;
       } else {
         displayResult.textContent = "Wrong!";
       }
+      answered = true;
     });
     optionsContainer.appendChild(button);
   });
@@ -86,6 +93,7 @@ restartBtn.addEventListener("click", () => {
   nextBtn.hidden = false;
   restartBtn.hidden = true;
   currentNumber = 0;
+  answered = false;
   score = 0;
   showQuestion();
 });
