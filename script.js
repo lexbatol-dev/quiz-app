@@ -39,7 +39,7 @@ const questions = [
 
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
-const displayResult = document.getElementById("result");
+const resultElement = document.getElementById("result");
 const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
 
@@ -49,7 +49,7 @@ let answered = false;
 
 function showQuestion() {
   optionsContainer.replaceChildren();
-  displayResult.textContent = "";
+  resultElement.textContent = "";
   answered = false;
 
   questionElement.textContent = questions[currentNumber].question;
@@ -63,10 +63,10 @@ function showQuestion() {
       }
 
       if (option === questions[currentNumber].answer) {
-        displayResult.textContent = "Right!";
+        resultElement.textContent = "Right!";
         score++;
       } else {
-        displayResult.textContent = "Wrong!";
+        resultElement.textContent = "Wrong!";
       }
       answered = true;
     });
@@ -76,16 +76,20 @@ function showQuestion() {
 showQuestion();
 
 nextBtn.addEventListener("click", () => {
-  currentNumber++;
-
-  if (currentNumber >= questions.length) {
-    displayResult.textContent = `You got ${score} out of ${questions.length}`;
-    optionsContainer.replaceChildren();
-    questionElement.textContent = "Quiz complete";
-    nextBtn.hidden = true;
-    restartBtn.hidden = false;
+  if (!answered) {
+    return;
   } else {
-    showQuestion();
+    currentNumber++;
+
+    if (currentNumber >= questions.length) {
+      resultElement.textContent = `You got ${score} out of ${questions.length}`;
+      optionsContainer.replaceChildren();
+      questionElement.textContent = "Quiz complete";
+      nextBtn.hidden = true;
+      restartBtn.hidden = false;
+    } else {
+      showQuestion();
+    }
   }
 });
 
@@ -93,7 +97,6 @@ restartBtn.addEventListener("click", () => {
   nextBtn.hidden = false;
   restartBtn.hidden = true;
   currentNumber = 0;
-  answered = false;
   score = 0;
   showQuestion();
 });
