@@ -104,3 +104,45 @@ body {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
 }
+
+#next-btn,
+#restart-btn {
+  width: 100%;
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, var(--blue), var(--lavender));
+
+  color: var(--base);
+
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+#next-btn:hover,
+#restart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgb(137 180 250 / 18%);
+}
+
+#next-btn:focus-visible,
+#restart-btn:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+#result {
+  margin-bottom: 16px;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
