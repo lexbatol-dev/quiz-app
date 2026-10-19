@@ -64,3 +64,43 @@ body {
   font-weight: 600;
   line-height: 1.5;
 }
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.options-container button {
+  width: 100%;
+  padding: 14px 16px;
+
+  background-color: var(--base);
+  color: var(--text);
+
+  border: 1px solid var(--surface-hover);
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.options-container button:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--lavender);
+
+  transform: translateY(-2px);
+}
+
+.options-container button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
