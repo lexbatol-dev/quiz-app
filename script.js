@@ -42,6 +42,7 @@ const optionsContainer = document.getElementById("options-container");
 const resultElement = document.getElementById("result");
 const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
+const finalScoreElement = document.getElementById("final-score");
 
 let currentNumber = 0;
 let score = 0;
@@ -70,7 +71,7 @@ function showQuestion() {
         resultElement.classList.add("correct");
         score++;
       } else {
-        resultElement.textContent = "Wrong!";
+        resultElement.textContent = `Wrong! The answer is ${questions[currentNumber].answer}`;
         resultElement.classList.add("wrong");
       }
       answered = true;
@@ -83,24 +84,27 @@ showQuestion();
 nextBtn.addEventListener("click", () => {
   if (!answered) {
     return;
-  } else {
-    currentNumber++;
+  }
+  currentNumber++;
 
-    if (currentNumber >= questions.length) {
-      resultElement.textContent = `You got ${score} out of ${questions.length}`;
-      optionsContainer.replaceChildren();
-      questionElement.textContent = "Quiz complete";
-      nextBtn.hidden = true;
-      restartBtn.hidden = false;
-    } else {
-      showQuestion();
-    }
+  if (currentNumber >= questions.length) {
+    resultElement.hidden = true;
+    finalScoreElement.hidden = false;
+    finalScoreElement.textContent = `You got ${score} out of ${questions.length}`;
+    optionsContainer.replaceChildren();
+    questionElement.textContent = "Quiz complete";
+    nextBtn.hidden = true;
+    restartBtn.hidden = false;
+  } else {
+    showQuestion();
   }
 });
 
 restartBtn.addEventListener("click", () => {
   nextBtn.hidden = false;
   restartBtn.hidden = true;
+  finalScoreElement.hidden = true;
+  resultElement.hidden = false;
   currentNumber = 0;
   score = 0;
   showQuestion();
