@@ -2,6 +2,8 @@
 
 A simple quiz application built with HTML, CSS and JavaScript. Answer five multiple-choice questions and see your final score at the end.
 
+**Play it here:** https://lexbatol-dev.github.io/quiz-app/
+
 ![Quiz screenshot](images/screenshot.png)
 
 ## Features
