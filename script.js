@@ -49,7 +49,10 @@ let answered = false;
 
 function showQuestion() {
   optionsContainer.replaceChildren();
+
   resultElement.textContent = "";
+  resultElement.classList.remove("correct", "wrong");
+
   answered = false;
 
   questionElement.textContent = questions[currentNumber].question;
@@ -64,9 +67,11 @@ function showQuestion() {
 
       if (option === questions[currentNumber].answer) {
         resultElement.textContent = "Right!";
+        resultElement.classList.add("correct");
         score++;
       } else {
         resultElement.textContent = "Wrong!";
+        resultElement.classList.add("wrong");
       }
       answered = true;
     });

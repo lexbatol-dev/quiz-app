@@ -29,7 +29,7 @@ body {
 
   padding: 24px;
 
-  font-family: Arial, Helvetica, sans-serif, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   background-color: var(--base);
   color: var(--text);
@@ -103,6 +103,14 @@ body {
 .options-container button:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
+}
+
+.correct {
+  color: var(--green);
+}
+
+.wrong {
+  color: var(--red);
 }
 
 #next-btn,
